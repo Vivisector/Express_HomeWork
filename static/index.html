@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework3 Главная страница</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <script src="./js/script.js"></script> -->
+</head>
+
+<body>
+    <h1>Домашняя страница проекта</h1>
+    <div class="counter">Просмотров: </div>
+    <a href="/static/about.html">На страницу об авторе</a>
+
+    <script>
+
+        fetch('/visits.json') // Запрос на сервер для получения счетчика
+            .then(response => response.json())
+            .then(data => {
+                const counterElement = document.querySelector('.counter');
+                // counterElement.textContent += data.count; // Обновление содержимого счетчика на странице
+                counterElement.textContent = 'Просмотров: ' + data['index.html'];
+                counterElement.style.display = 'block';
+                // alert(counterElement.textContent);
+            })
+            .catch(error => console.error('Ошибка:', error));
+    </script>
+</body>
+
+</html>
